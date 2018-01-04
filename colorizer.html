@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html id="html">
+	<head>
+		<title>Color randomizer</title>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="colorizer_style.css" />		
+		<link rel="icon" type="image/png" href="favicon.png" />	
+	</head>
+	
+	<body>
+		<div class="line">
+			<center>
+			<span id="toCol">default</span>
+			<script>
+				var colours = ['#3369E8', '#D50F25', '#009925', '#EEB211'];
+			
+				// Retrieve the element
+				var element = document.getElementById("toCol");
+				
+				// Get input
+				var s = prompt("Introduce o texto\n'\\' para separar liñas", "Google");
+				
+				if (s == null || s == "") {
+					s=element.innerHTML;;
+				}
+				
+				// Split to chars
+				var str = s.split("");
+				
+				// Remove content
+				element.innerHTML="";
+
+				// Iterate over elements
+				var i;
+				var chr;
+				var lastc;
+				for (i=0; i<str.length; i++) {
+					// Get random color
+				    	var colourIndex = Math.floor(Math.random() * colours.length);
+				    	while (colourIndex == lastc) {
+				    		colourIndex = Math.floor(Math.random() * colours.length);
+				    	}
+				    	lastc=colourIndex;
+				    	if (str[i] == "\\") {
+				    		chr=document.createElement("BR");
+				    	} else {
+				    		chr=document.createElement("SPAN");
+				    		if (str[i] == " ") {
+				    			chr.innerHTML="\u00A0";
+				    		} else {
+							chr.innerHTML=str[i];
+						}
+					}
+					chr.setAttribute("style", "display: inline-block;" + 
+										"font-family: 'Product Sans', sans-serif;" + 
+										"font-size: 5em;" +
+										"font-weight: bold;" +
+										"color: " + colours[colourIndex] + ";");
+					document.getElementById("toCol").appendChild(chr);
+				}				
+			</script>
+			</center>
+		</div>
+	</body>
+</html>
+
+<!-- <span class="char">#</span> -->
+			<!-- <div class="word">
+				<span class="char">N</span>
+				<span class="char">o</span>
+				<span class="char">n</span>
+			</div><br/ >
+			<div class="word">
+				<span class="char">a</span>
+				<span class="char">p</span>
+				<span class="char">r</span>
+				<span class="char">o</span>
+				<span class="char">b</span>
+				<span class="char">a</span>
+				<span class="char">c</span>
+				<span class="char">h</span>
+				<span class="char">e</span>
+				<span class="char">s</span>
+			</div><br/ >
+			<div class="word">
+				<span class="char">n</span>
+				<span class="char">i</span>
+				<span class="char">n</span>
+				<span class="char">g</span>
+				<span class="char">u</span>
+				<span class="char">n</span>
+				<span class="char">h</span>
+				<span class="char">a</span>
+			</div><br/ > -->

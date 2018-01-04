@@ -68,7 +68,7 @@ img {
 	font-size: 1.5em;
 	padding: 1em;
 	text-align: center;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	right: 0;
 	left: 0;
