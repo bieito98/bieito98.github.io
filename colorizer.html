@@ -10,7 +10,7 @@
 	<body>
 		<div class="line">
 			<script>
-				var colours = ['#3369E8', '#D50F25', '#009925', '#EEB211'];
+				var colours = ['red', 'green', 'blue', 'yellow'];
 							
 				// Get input
 				var s = prompt("Introduce o texto\n'\\' para separar liñas", "Default\\Newline");
@@ -29,9 +29,11 @@
 				var i;
 				var chr;
 				var lastc;
+				var rotate;
 				for (i=0; i<str.length; i++) {
 					// Get random color
 				    	var colourIndex = Math.floor(Math.random() * colours.length);
+				    	// Avoid same color twice
 				    	while (colourIndex == lastc) {
 				    		colourIndex = Math.floor(Math.random() * colours.length);
 				    	}
@@ -43,11 +45,15 @@
 				    		if (str[i] == " ") {
 				    			chr.innerHTML="\u00A0";
 				    		} else {
-							chr.innerHTML=str[i];
+								chr.innerHTML=str[i];
 						}
 					}
-					chr.setAttribute("class", "char");
-					chr.setAttribute("style", "color: " + colours[colourIndex] + ";");
+					/*if (chr.innerHTML == "e") {
+						rotate = " rotate";
+					} else {
+						rotate = "";
+					}*/
+					chr.setAttribute("class", "char " + colours[colourIndex]);
 					newSpan.appendChild(chr);
 				}
 				document.getElementsByClassName("line")[0].appendChild(newSpan);
@@ -61,30 +67,3 @@
 </html>
 
 <!-- <span class="char">#</span> -->
-			<!-- <div class="word">
-				<span class="char">N</span>
-				<span class="char">o</span>
-				<span class="char">n</span>
-			</div><br/ >
-			<div class="word">
-				<span class="char">a</span>
-				<span class="char">p</span>
-				<span class="char">r</span>
-				<span class="char">o</span>
-				<span class="char">b</span>
-				<span class="char">a</span>
-				<span class="char">c</span>
-				<span class="char">h</span>
-				<span class="char">e</span>
-				<span class="char">s</span>
-			</div><br/ >
-			<div class="word">
-				<span class="char">n</span>
-				<span class="char">i</span>
-				<span class="char">n</span>
-				<span class="char">g</span>
-				<span class="char">u</span>
-				<span class="char">n</span>
-				<span class="char">h</span>
-				<span class="char">a</span>
-			</div><br/ > -->
