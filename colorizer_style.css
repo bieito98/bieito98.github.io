@@ -41,7 +41,7 @@ button {
 .char {
 	display: inline-block;
 	font-family: 'Product Sans', sans-serif;
-	font-size: 4vw;
+	font-size: 5em;
 	font-weight: bold;
 }
 
@@ -59,4 +59,17 @@ button {
 
 .yellow {
 	color: #EEB211;
+}
+
+.foot {
+	background-color: rgba(0,0,0,0.75);
+	color: white;
+	font-family: monospace;
+	font-size: 1.5em;
+	padding: 1em;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	left: 0;
 }

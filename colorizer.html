@@ -10,25 +10,25 @@
 	<body>
 		<div class="line">
 			<center>
-			<span id="toCol">default</span>
+			<!-- <span id="toCol">none</span>*/ -->
 			<script>
 				var colours = ['#3369E8', '#D50F25', '#009925', '#EEB211'];
 			
-				// Retrieve the element
-				var element = document.getElementById("toCol");
+				/*// Retrieve the element
+				var element = document.getElementById("toCol");*/
 				
 				// Get input
-				var s = prompt("Introduce o texto\n'\\' para separar liñas", "Google");
+				var s = prompt("Introduce o texto\n'\\' para separar liñas", "Default\\Newline");
 				
 				if (s == null || s == "") {
-					s=element.innerHTML;;
+					s="404";
 				}
 				
 				// Split to chars
 				var str = s.split("");
 				
-				// Remove content
-				element.innerHTML="";
+				// Create span
+				var newSpan = document.createElement("SPAN");
 
 				// Iterate over elements
 				var i;
@@ -51,15 +51,17 @@
 							chr.innerHTML=str[i];
 						}
 					}
-					chr.setAttribute("style", "display: inline-block;" + 
-										"font-family: 'Product Sans', sans-serif;" + 
-										"font-size: 5em;" +
-										"font-weight: bold;" +
-										"color: " + colours[colourIndex] + ";");
-					document.getElementById("toCol").appendChild(chr);
-				}				
+					chr.setAttribute("class", "char");
+					chr.setAttribute("style", "color: " + colours[colourIndex] + ";");
+					newSpan.appendChild(chr);
+				}
+				document.getElementsByClassName("line")[0].appendChild(newSpan);
 			</script>
 			</center>
+		</div>
+		<div class="foot">
+			Made by
+			<a href="https://www.instagram.com/_u/bieito98/" style="color:white;" >bieito98</a>
 		</div>
 	</body>
 </html>
