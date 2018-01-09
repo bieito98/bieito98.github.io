@@ -38,9 +38,14 @@ button {
 	height: inherit;
 }
 
+@font-face {
+	font-family: 'My Font';
+	src: url("downloadable/productsansreg.ttf");
+}
+
 .char {
 	display: inline-block;
-	font-family: 'Product Sans', sans-serif;
+	font-family: 'My Font', sans-serif;
 	font-size: 5em;
 	font-weight: bold;
 }
