@@ -11,6 +11,7 @@ button {
 	border-radius: 1vw;
 	margin-left: auto;
 	color: rgba(0,0,0,0.5);
+	cursor: pointer;
 }
 
 .searchbar {
