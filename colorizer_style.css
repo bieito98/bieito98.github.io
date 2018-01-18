@@ -3,13 +3,14 @@ body {
 }
 
 button {
-	background-color: rgba(0,0,0,0.2);
+	background-color: white;
 	font-family: 'Product Sans', sans-serif;
 	font-size: 1vw;
-	margin: 1vw;
 	padding: 0.5vw;
-	border: 0.2vw solid #000000;
+	border: 0.2vw solid rgba(0,0,0,0.5);
 	border-radius: 1vw;
+	margin-left: auto;
+	color: ;
 }
 
 .searchbar {
@@ -23,7 +24,7 @@ button {
 	border-radius: 1vw;
 }
 
-.line {
+#box {
 	display: table;
 	padding: 2em;
 	border: 0.3em solid transparent;
@@ -31,6 +32,10 @@ button {
 	box-shadow: 0vw 0vh 3em;
 	background-color: #FFFFFF;
 	margin: 20vh auto;
+}
+
+.line {
+
 }
 
 .word {
@@ -41,6 +46,17 @@ button {
 @font-face {
 	font-family: 'My Font';
 	src: url("downloadable/productsansreg.ttf");
+}
+
+#textin {
+	width: 20vw;
+	background-color: rgba(0,0,0,0.6);
+	border: 0.3em solid transparent;
+	border-radius: 0.5em;
+	font-family: 'My Font', sans-serif;
+	font-size: 1vw;
+	margin-bottom: 3vh;
+	color: white;
 }
 
 .char {

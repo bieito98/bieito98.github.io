@@ -3,61 +3,30 @@
 	<head>
 		<title>Color randomizer</title>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-		<link rel="stylesheet" type="text/css" href="colorizer_style.css" />		
-		<link rel="icon" type="image/png" href="favicon.png" />	
+		<link rel="stylesheet" type="text/css" href="colorizer_style.css" />
+		<link rel="icon" type="image/png" href="favicon.png" />
+		<script type="text/javascript" src="colorizer_script.js"></script>
 	</head>
-	
-	<body>
-		<div class="line">
-			<script>
-				var colours = ['red', 'green', 'blue', 'yellow'];
-							
-				// Get input
-				var s = prompt("Introduce o texto\n'\\' para separar liñas", "Default\\Newline");
-				
-				if (s == null || s == "") {
-					s="Made by\\@bieito98";
-				}
-				
-				// Split to chars
-				var str = s.split("");
-				
-				// Create span
-				var newSpan = document.createElement("SPAN");
 
-				// Iterate over elements
-				var i;
-				var chr;
-				var lastc;
-				var rotate;
-				for (i=0; i<str.length; i++) {
-					// Get random color
-				    	var colourIndex = Math.floor(Math.random() * colours.length);
-				    	// Avoid same color twice
-				    	while (colourIndex == lastc) {
-				    		colourIndex = Math.floor(Math.random() * colours.length);
-				    	}
-				    	lastc=colourIndex;
-				    	if (str[i] == "\\") {
-				    		chr=document.createElement("BR");
-				    	} else {
-				    		chr=document.createElement("SPAN");
-				    		if (str[i] == " ") {
-				    			chr.innerHTML="\u00A0";
-				    		} else {
-								chr.innerHTML=str[i];
-						}
-					}
-					/*if (chr.innerHTML == "e") {
-						rotate = " rotate";
-					} else {
-						rotate = "";
-					}*/
-					chr.setAttribute("class", "char " + colours[colourIndex]);
-					newSpan.appendChild(chr);
+	<body>
+		<div id="box">
+			<script>
+				function colorize() {
+					var frm = document.getElementById("frm");
+					var text = frm.childNodes[1].value;
+					//prompt("Introduce o texto\n'\\' para separar liñas"	, "Default\\Newline");
+					frm.parentNode.removeChild(frm);
+					formatText(text);
 				}
-				document.getElementsByClassName("line")[0].appendChild(newSpan);
+				function input_onfocus () {
+					document.getElementById("textin").value = "";
+				}
 			</script>
+			<form id="frm">
+				<input type="text" id="textin" value="Introduce aquí\o texto a convertir" onfocus="input_onfocus();">
+				<br />
+				<button onclick="colorize();">Colorize!</button>
+			</form>
 		</div>
 		<div class="foot">
 			Made by
