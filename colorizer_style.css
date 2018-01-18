@@ -10,7 +10,7 @@ button {
 	border: 0.2vw solid rgba(0,0,0,0.5);
 	border-radius: 1vw;
 	margin-left: auto;
-	color: ;
+	color: rgba(0,0,0,0.5);
 }
 
 .searchbar {
@@ -50,13 +50,14 @@ button {
 
 #textin {
 	width: 20vw;
-	background-color: rgba(0,0,0,0.6);
-	border: 0.3em solid transparent;
-	border-radius: 0.5em;
+	background-color: white;
+	border: 0.2em solid rgba(0,0,0,0.5);
+	border-radius: 1em;
 	font-family: 'My Font', sans-serif;
 	font-size: 1vw;
 	margin-bottom: 3vh;
-	color: white;
+	color: rgba(0,0,0,0.5);
+	padding: 0.5vw;
 }
 
 .char {
