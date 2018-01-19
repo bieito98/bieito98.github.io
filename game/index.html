@@ -15,6 +15,7 @@
 		function killedBox (id) {
 			document.getElementById(id).style.backgroundColor = "#F00";
 			refreshScore(0,1);
+			document.getElementById("body").removeChild(document.getElementById(id));
 		}
 
 		function createBox (num_id) {
