@@ -20,9 +20,14 @@
 				function input_onfocus () {
 					document.getElementById("textin").value = "";
 				}
+				function managePress (e) {
+					if (e.keyCode == 13) {
+						colorize();
+					}
+				}
 			</script>
 			<div id="frm">
-				<input type="text" id="textin" value="Introduce aquí\o texto a convertir" onfocus="input_onfocus();" onSubmit="colorize();">
+				<input type="text" id="textin" value="Introduce aquí\o texto a convertir" onfocus="input_onfocus();" onkeypress="managePress(ev);">
 				<br />
 				<button onclick="colorize();">Colorize!</button>
 			</div>
