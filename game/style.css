@@ -21,8 +21,8 @@ body {
 }
 
 .box {
-	width: 5vh;
-	height: 5vh;
+	width: 64px;
+	height: 64px;
 	position: absolute;
 	background-image: url("face.png");
 	background-size: cover;

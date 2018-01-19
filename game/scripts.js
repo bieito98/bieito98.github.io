@@ -45,8 +45,8 @@ function createBox (num_id) {
 	var box = document.createElement("DIV");
 
 	box.classList.add("box");
-	box.style.left = Math.floor(Math.random() * screenX * 0.95) + "px";
-	box.style.top = Math.floor(Math.random() * screenY * 0.95) + "px";
+	box.style.left = Math.floor(Math.random() * (screenX-64) ) + "px";
+	box.style.top = Math.floor(Math.random() * (screenY-64)) + "px";
 	box.id = "box_no" + num_id;
 	box.setAttribute("onclick", "killedBox('" + box.id + "');");
 
