@@ -14,7 +14,6 @@
 				function colorize() {
 					var frm = document.getElementById("frm");
 					var text = frm.childNodes[1].value;
-					//prompt("Introduce o texto\n'\\' para separar liñas"	, "Default\\Newline");
 					frm.parentNode.removeChild(frm);
 					formatText(text);
 				}
@@ -22,11 +21,11 @@
 					document.getElementById("textin").value = "";
 				}
 			</script>
-			<form id="frm">
-				<input type="text" id="textin" value="Introduce aquí\o texto a convertir" onfocus="input_onfocus();">
+			<div id="frm">
+				<input type="text" id="textin" value="Introduce aquí\o texto a convertir" onfocus="input_onfocus();" onSubmit="colorize();">
 				<br />
 				<button onclick="colorize();">Colorize!</button>
-			</form>
+			</div>
 		</div>
 		<div class="foot">
 			Made by
