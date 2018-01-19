@@ -1,0 +1,20 @@
+html {
+	cursor: crosshair;
+	height: 100vh;
+	width: 100vw;
+}
+
+body {
+	border-color: black;
+}
+
+#score {
+	;
+}
+
+.box {
+	width: 5vw;
+	height: 5vh;
+	position: absolute;
+	background-color: black;
+}

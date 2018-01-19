@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html onclick="refreshScore(1,0);">
+<head>
+	<title>Box killer</title>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="icon" type="image/png" href="../favicon.png" />
+	<script type="text/javascript" src="scripts.js"></script>
+</head>
+<body id="body">
+	<script>
+		var screenX = window.innerWidth;
+		var screenY = window.innerHeight;
+
+		function killedBox (id) {
+			document.getElementById(id).style.backgroundColor = "#F00";
+			refreshScore(0,1);
+		}
+
+		function createBox (num_id) {
+
+			var box = document.createElement("DIV");
+
+			box.classList.add("box");
+			box.style.left = Math.floor(Math.random() * screenX * 0.95) + "px";
+			box.style.top = Math.floor(Math.random() * screenY * 0.95) + "px";
+			box.id = "box_no" + num_id;
+			box.setAttribute("onclick", "killedBox('" + box.id + "');");
+
+			return box;
+		}
+
+
+
+		document.getElementById("body").innerText = screenX + "x" + screenY;
+
+		for (var i = 0; i < 10; i++) {
+			document.getElementById("body").appendChild(createBox(i));
+		}
+	</script>
+
+	<div id="score">0:0</div>
+</body>
+</html>
