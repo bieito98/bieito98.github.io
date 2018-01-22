@@ -58,7 +58,7 @@ async function killedBox (id) {
 }
 
 function createBox (num_id) {
-
+	var sprites = ["tank.gif", "copter.gif"];
 	var box = document.createElement("DIV");
 
 	box.classList.add("box");
@@ -66,6 +66,7 @@ function createBox (num_id) {
 	box.style.top = Math.floor(Math.random() * (screenY-64)) + "px";
 	box.id = "box_no" + num_id;
 	box.setAttribute("onclick", "refreshScore(0,1);killedBox('" + box.id + "');");
+	box.style.backgroundImage = "url('" + sprites[Math.floor(Math.random() * 2)] + "')";
 
 	return box;
 }
