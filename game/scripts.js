@@ -1,5 +1,6 @@
 var screenX = window.innerWidth;
 var screenY = window.innerHeight;
+var difficulty;
 
 function playShoot (aud) {
 	var sound = document.createElement("audio");
@@ -19,8 +20,8 @@ function playShoot (aud) {
 
 function restartGame () {
 	document.getElementById("score").innerHTML = "0:0";
-	document.getElementById("html").setAttribute("onclick", "refreshScore(1,0)");;
-	startGame(10);
+	document.getElementById("html").setAttribute("onclick", "refreshScore(1,0)");
+	startGame();
 }
 
 function endGame () {
@@ -39,7 +40,7 @@ function refreshScore (miss, target) {
 	playShoot( (miss == 1) ? (0) : (1) );
 	document.getElementById("score").innerHTML = (Number(score[0]) + miss)
 							+ ":" + (Number(score[1]) + target);
-	if (score[1] == 10) {
+	if (score[1] == difficulty) {
 		endGame();
 	}
 }
@@ -60,19 +61,33 @@ async function killedBox (id) {
 function createBox (num_id) {
 	var sprites = ["tank.gif", "copter.gif"];
 	var box = document.createElement("DIV");
+	var side = Math.floor(Math.sqrt(screenX*screenY*0.1*0.1));
 
 	box.classList.add("box");
-	box.style.left = Math.floor(Math.random() * (screenX-64) ) + "px";
-	box.style.top = Math.floor(Math.random() * (screenY-64)) + "px";
 	box.id = "box_no" + num_id;
 	box.setAttribute("onclick", "refreshScore(0,1);killedBox('" + box.id + "');");
 	box.style.backgroundImage = "url('" + sprites[Math.floor(Math.random() * 2)] + "')";
 
+	box.style.width = side + "px";
+	box.style.height = side + "px";
+	box.style.left = Math.floor(Math.random() * (screenX - side) ) + "px";
+	box.style.top = Math.floor(Math.random() * (screenY - side)) + "px";
+
+
 	return box;
 }
 
-function startGame (num) {
-	for (var i = 0; i < num; i++) {
+function startGame () {
+	difficulty = prompt("Introduce numero de caixas a xerar:");
+
+	if (Number(difficulty) > 0) {
+		difficulty = Number(difficulty);
+	} else {
+		alert("Entrada non válida. Xeraranse 10 caixas.");
+		difficulty = 10;
+	}
+
+	for (var i = 0; i < difficulty; i++) {
 		document.getElementById("body").appendChild(createBox(i));
 	}
 }
