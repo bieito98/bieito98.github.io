@@ -9,23 +9,37 @@ body {
 }
 
 #score {
+	left: 1em;
+}
+
+#max_score {
+	right: 1em;
+}
+
+.score_format {
 	color: white;
 	font-weight: bold;
 	font-family: monospace;
 	font-size: 2em;
-	margin: 1em;
 	border: 0.2em dashed white;
 	padding: 1em;
 	width: 3em;
 	text-align: center;
 	user-select: none;
+	top: 1em;
+	position: absolute;
+}
+
+@keyframes box_spawn_to_center {
+	100% {left: 50vw; top: 50vh;}
 }
 
 .box {
-	width: 64px;
-	height: 64px;
 	position: absolute;
 	background-size: cover;
 	background-position: center;
 	background-color: transparent;
+	/*animation-name: box_spawn_to_center;
+	animation-duration: 6s;
+	animation-fill-mode: forwards;*/
 }
