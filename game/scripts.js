@@ -9,7 +9,7 @@ function playShoot (aud) {
 	var sound_source;
 
 	switch (aud) {
-		case 0: sound_source = "miss.mp3";
+		case 0: sound_source = "explosion.mp3";
 			break;
 		case 1: sound_source = "shoot.mp3";
 	}
@@ -228,10 +228,12 @@ function Attacker (image_url, nid, ssize) {
 		var points = Math.floor(percent * this.max_life);
 
 		if ( (this.life -= percent * HIT_VALUE) <= 0 ) {
+			playShoot(0);
 			killed++;
 			this.removeAttacker();
 			//this.playSound(death);
 		} else {
+			playShoot(1);
 			document.getElementById("box_no" + this.nid).style.backgroundColor = "rgba(255, 0, 0, " + (1-this.life/this.max_life) + ")";
 		};
 		current_score.addPoint(points);
