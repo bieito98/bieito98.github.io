@@ -11,14 +11,21 @@
 <body id="body">
 	<div id="score" class="score_format"></div>
 	<div id="max_score" class="score_format"></div>
-	<div id="timer"></div>
+
 	<script>
 		//document.getElementById("body").innerText = screenX + "x" + screenY;
-
+		var clouds = [];
+		var n = 3;
+		for (var i=0; i<n; i++) {
+			clouds[i] = new Cloud(n, i);
+		}
 		current_score.resetScore();
 		max_current_score.resetScore();
 		startGame();
 		//startTimer();
 	</script>
+	<footer>
+		Last Update: 27 Xan - 01:32
+	</footer>
 </body>
 </html>

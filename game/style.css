@@ -8,6 +8,24 @@ body {
 	background-color: #1f4f7f;
 }
 
+footer {
+	color: white;
+	background-color: black;
+	font-size: 1em;
+	font-family: monospace;
+	font-variant: small-caps;
+	font-weight: bold;
+
+	text-align: center;
+	padding: 0.5em;
+
+	position: absolute;
+	z-index: 0;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+
 #score {
 	left: 1em;
 }
@@ -30,16 +48,54 @@ body {
 	position: absolute;
 }
 
-@keyframes box_spawn_to_center {
-	100% {left: 50vw; top: 50vh;}
-}
-
 .box {
 	position: absolute;
 	background-size: cover;
 	background-position: center;
 	background-color: transparent;
+	z-index: 1;
 	/*animation-name: box_spawn_to_center;
 	animation-duration: 6s;
 	animation-fill-mode: forwards;*/
+}
+
+.flippedX {
+	transform: scaleX(-1);
+}
+
+.flippedY {
+	transform: scaleY(-1);
+}
+
+@keyframes cloud_move_lr {
+	100% {left: 80vw;}
+}
+
+.cloud_lr {
+	left: 0px;
+	animation-name: cloud_move_lr;
+	animation-iteration-count: infinite;
+}
+
+@keyframes cloud_move_rl {
+	100% {right: 80vw;}
+}
+
+.cloud_rl {
+	right: 0px;
+	animation-name: cloud_move_rl;
+	animation-iteration-count: infinite;
+}
+
+
+.cloud {
+	position: absolute;
+	background-image: url("cloud.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: -1;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
 }

@@ -2,6 +2,7 @@ var screenX = window.innerWidth;
 var screenY = window.innerHeight;
 var difficulty;
 var killed;
+const HIT_VALUE = 100;
 
 function playShoot (aud) {
 	var sound = document.createElement("audio");
@@ -154,6 +155,34 @@ function MaxScore (name) {
 var current_score = new Score ("score");
 var max_current_score = new MaxScore("max_score");
 
+/* BACKGROUND */
+	/* CLOUDS */
+function Cloud (tot, num) {
+	var animDir = ["alternate", "alternate-reverse"]
+	var cloud = document.createElement("DIV");
+
+	this.ssize = Math.floor(Math.sqrt(screenX*screenY*0.1*0.1) * 2);
+
+	cloud.classList.add("cloud");
+	cloud.style.width = this.ssize + "px";
+	cloud.style.height = this.ssize + "px";
+	cloud.style.top = Math.floor( Math.random() * (screenY / tot - this.ssize) + num * screenY / tot) + "px";
+
+	if (Math.floor(Math.random() * 2)) {
+		cloud.classList.add("cloud_rl");
+	} else {
+		cloud.classList.add("cloud_lr");
+		cloud.classList.add("flippedX");
+	}
+	cloud.style.animationDuration = Math.floor(30 + Math.random() * 90) + "s";
+
+	document.getElementById("body").appendChild(cloud);
+}
+
+function Background () {
+
+}
+
 /* BOXES */
 function Attacker (image_url, nid, ssize) {
 	this.image = image_url;
@@ -163,15 +192,19 @@ function Attacker (image_url, nid, ssize) {
 		w: Math.floor(Math.random() * (screenX - this.ssize) ),
 		h: Math.floor(Math.random() * (screenY - this.ssize) )
 	};
+	this.max_life = 100;
+	this.life = 100;
 
 	this.placeAttacker = function() {
 		var box = document.createElement("DIV");
 
 		box.classList.add("box");
+		if (Math.floor(Math.random() * 2)) {
+			box.classList.add("flippedX");
+		}
 		box.id = "box_no" + this.nid;
-		box.setAttribute("onclick", "attackers[" + this.nid + "].killAttacker(event);");
+		box.setAttribute("onclick", "attackers[" + this.nid + "].hitAttacker(event);");
 		box.style.backgroundImage = "url('" + this.image + "')";
-
 		box.style.width = this.ssize + "px";
 		box.style.height = this.ssize + "px";
 		box.style.left = this.position.w + "px";
@@ -182,14 +215,25 @@ function Attacker (image_url, nid, ssize) {
 
 	this.removeAttacker = function() {
 		document.getElementById("body").removeChild(document.getElementById("box_no" + this.nid));
-	}
+	};
 
-	this.killAttacker = function(ev) {
-		killed++;
-		var x = Math.abs(ev.clientX - (this.position.w + Math.floor(this.ssize/2)));
-		var y = Math.abs(ev.clientY - (this.position.h + Math.floor(this.ssize/2)));
+	this.hitAttacker = function (ev) {
+		var a = ev.clientX;		// (a,b) -> click
+		var b = ev.clientY;
+		var x = this.position.w;	// (x,y) -> position
+		var y = this.position.h;
+		var s = this.ssize;
 
-		current_score.addPoint(this.ssize-x-y);
-		this.removeAttacker();
-	}
+		var percent = (1 - (Math.abs(x + s/2 - a) + Math.abs(y + s/2 - b)) / s );
+		var points = Math.floor(percent * this.max_life);
+
+		if ( (this.life -= percent * HIT_VALUE) <= 0 ) {
+			killed++;
+			this.removeAttacker();
+			//this.playSound(death);
+		} else {
+			document.getElementById("box_no" + this.nid).style.backgroundColor = "rgba(255, 0, 0, " + (1-this.life/this.max_life) + ")";
+		};
+		current_score.addPoint(points);
+	};
 };
